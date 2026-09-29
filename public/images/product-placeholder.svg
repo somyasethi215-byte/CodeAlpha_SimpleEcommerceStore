@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+    <rect width="900" height="900" fill="#f3f4f6"/>
+    <rect x="250" y="250" width="400" height="300" rx="30" fill="#ffffff" stroke="#d1d5db" stroke-width="8"/>
+    <circle cx="450" cy="380" r="70" fill="#e5e7eb"/>
+    <rect x="330" y="480" width="240" height="25" rx="12" fill="#d1d5db"/>
+    <text x="450" y="620" text-anchor="middle"
+          font-family="Arial"
+          font-size="42"
+          font-weight="700"
+          fill="#6b7280">
+        ShopEase
+    </text>
+</svg>

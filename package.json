@@ -1,0 +1,16 @@
+{
+  "name": "shopease-ecommerce",
+  "version": "1.0.0",
+  "description": "Simple E-commerce Store using Express.js and SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.7"
+  }
+}

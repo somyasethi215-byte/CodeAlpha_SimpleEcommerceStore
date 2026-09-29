@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEase | Categories</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        Shop<span>Ease</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="categories.html">
+            Categories
+        </a>
+
+        <a href="cart.html">
+            Cart
+            <span id="cartCount">0</span>
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="category-page">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="section-label">
+                SHOP BY CATEGORY
+            </p>
+
+            <h1>
+                Explore Categories
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="categoryGrid"
+        class="category-grid"
+    >
+
+        <div class="loading">
+            Loading categories...
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="logo">
+        Shop<span>Ease</span>
+    </div>
+
+    <p>
+        © 2026 ShopEase. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script src="js/categories.js"></script>
+
+</body>
+
+</html>

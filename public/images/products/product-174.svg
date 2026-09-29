@@ -1,0 +1,42 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+            <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f8fafc"/>
+                    <stop offset="1" stop-color="#e5e7eb"/>
+                </linearGradient>
+                <filter id="shadow">
+                    <feGaussianBlur stdDeviation="22"/>
+                </filter>
+            </defs>
+
+            <rect width="900" height="700" fill="url(#bg)"/>
+            <ellipse cx="450" cy="560" rx="230" ry="40"
+                     fill="#6b7280" opacity=".3" filter="url(#shadow)"/>
+
+            <path d="M250 360 V270
+                     C250 100 650 100 650 270
+                     V360"
+                  fill="none"
+                  stroke="#111827"
+                  stroke-width="70"
+                  stroke-linecap="round"/>
+
+            <rect x="205" y="300" width="125" height="200"
+                  rx="45" fill="#1f2937"/>
+            <rect x="570" y="300" width="125" height="200"
+                  rx="45" fill="#1f2937"/>
+
+            <circle cx="267" cy="400" r="52" fill="#374151"/>
+            <circle cx="632" cy="400" r="52" fill="#374151"/>
+
+            <text x="450" y="625"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="27"
+                  font-weight="700"
+                  fill="#374151">
+                Gaming Headset Pro
+            </text>
+        </svg>
+    

@@ -1,0 +1,59 @@
+```javascript
+const sqlite3 = require("sqlite3").verbose();
+
+const db = new sqlite3.Database("./database.db");
+
+const products = [
+    ["Wireless Headphones", 2499, "Premium wireless headphones with deep bass and long battery life.", "Electronics", "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"],
+    ["Smart Watch", 3499, "Modern smartwatch with fitness tracking and notifications.", "Electronics", "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"],
+    ["Running Shoes", 2999, "Lightweight running shoes designed for comfort.", "Fashion", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800"],
+    ["Premium Backpack", 1899, "Stylish backpack for college, travel and work.", "Fashion", "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"],
+    ["Mechanical Keyboard", 4599, "RGB mechanical keyboard with tactile switches.", "Electronics", "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800"],
+    ["Gaming Mouse", 1599, "High precision gaming mouse with adjustable DPI.", "Electronics", "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800"],
+    ["Classic Hoodie", 1499, "Comfortable modern oversized hoodie.", "Fashion", "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800"],
+    ["Sunglasses", 999, "Minimal sunglasses with UV protection.", "Accessories", "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800"],
+    ["Leather Wallet", 799, "Slim everyday wallet with multiple card slots.", "Accessories", "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800"],
+    ["Smartphone Stand", 599, "Adjustable desk stand for smartphones.", "Accessories", "https://images.unsplash.com/photo-1609592424934-3c7b9e6f4e4e?w=800"],
+    ["Coffee Mug", 499, "Minimal ceramic coffee mug for your desk.", "Home", "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800"],
+    ["Desk Lamp", 1299, "Modern LED desk lamp with adjustable brightness.", "Home", "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800"]
+];
+
+db.serialize(() => {
+
+    // Add category/image columns if they don't already exist
+    db.run(
+        "ALTER TABLE products ADD COLUMN category TEXT",
+        () => {}
+    );
+
+    db.run(
+        "ALTER TABLE products ADD COLUMN image TEXT",
+        () => {}
+    );
+
+    setTimeout(() => {
+
+        const sql =
+            "INSERT INTO products (name, price, description, category, image) VALUES (?, ?, ?, ?, ?)";
+
+        const statement = db.prepare(sql);
+
+        products.forEach(product => {
+            statement.run(product);
+        });
+
+        statement.finalize(() => {
+
+            console.log("");
+            console.log("================================");
+            console.log("   PRODUCTS ADDED SUCCESSFULLY");
+            console.log("================================");
+            console.log("12 new products added.");
+            console.log("");
+
+            db.close();
+        });
+
+    }, 300);
+
+});

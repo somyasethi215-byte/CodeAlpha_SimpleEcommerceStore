@@ -1,0 +1,45 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+            <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f8fafc"/>
+                    <stop offset="1" stop-color="#cbd5e1"/>
+                </linearGradient>
+                <filter id="shadow">
+                    <feGaussianBlur stdDeviation="22"/>
+                </filter>
+            </defs>
+
+            <rect width="900" height="700" fill="url(#bg)"/>
+            <ellipse cx="450" cy="570" rx="210" ry="35"
+                     fill="#475569" opacity=".3" filter="url(#shadow)"/>
+
+            <rect x="280" y="80" width="340" height="470"
+                  rx="55" fill="#111827"/>
+
+            <circle cx="450" cy="230" r="95"
+                    fill="#374151"
+                    stroke="#64748b"
+                    stroke-width="12"/>
+
+            <circle cx="450" cy="230" r="62"
+                    fill="#111827"/>
+
+            <circle cx="450" cy="405" r="70"
+                    fill="#374151"
+                    stroke="#64748b"
+                    stroke-width="12"/>
+
+            <circle cx="450" cy="405" r="42"
+                    fill="#111827"/>
+
+            <text x="450" y="625"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="27"
+                  font-weight="700"
+                  fill="#374151">
+                Bluetooth Speaker Premium
+            </text>
+        </svg>
+    

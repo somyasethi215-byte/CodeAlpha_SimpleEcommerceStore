@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEase | My Orders</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        Shop<span>Ease</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+
+        <a href="cart.html">
+            Cart
+            <span id="cartCount">0</span>
+        </a>
+
+        <a href="orders.html">
+            My Orders
+        </a>
+
+        <a href="#" onclick="logout()">
+            Logout
+        </a>
+    </nav>
+
+</header>
+
+
+<main class="orders-page">
+
+    <div class="orders-heading">
+
+        <div>
+            <p class="section-label">
+                ACCOUNT
+            </p>
+
+            <h1>
+                My Orders
+            </h1>
+
+            <p>
+                Track your ShopEase purchases.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div id="ordersContainer">
+
+        <div class="loading">
+            Loading your orders...
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="logo">
+        Shop<span>Ease</span>
+    </div>
+
+    <p>
+        © 2026 ShopEase. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script src="js/orders.js"></script>
+
+</body>
+
+</html>

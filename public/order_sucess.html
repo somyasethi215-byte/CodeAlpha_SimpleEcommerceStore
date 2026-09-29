@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Order Confirmed | ShopEase</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        .success-page {
+            max-width: 800px;
+            margin: 70px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            margin: auto;
+            border-radius: 50%;
+            background: #dcfce7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+        }
+
+        .success-card {
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+            background: white;
+        }
+
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .success-actions a {
+            flex: 1;
+            padding: 13px;
+            text-align: center;
+            border-radius: 9px;
+            text-decoration: none;
+            background: #111827;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .success-actions {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a href="index.html">
+            ShopEase
+        </a>
+
+        <a href="orders.html">
+            My Orders
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="success-page">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h1>
+        Order Placed Successfully!
+    </h1>
+
+    <p>
+        Thank you for shopping with ShopEase.
+    </p>
+
+    <div
+        id="orderDetails"
+        class="success-card"
+    >
+        Loading order details...
+    </div>
+
+    <div class="success-actions">
+
+        <a href="index.html">
+            Continue Shopping
+        </a>
+
+        <a href="orders.html">
+            View My Orders
+        </a>
+
+    </div>
+
+</main>
+
+<script src="js/order-success.js"></script>
+
+</body>
+</html>

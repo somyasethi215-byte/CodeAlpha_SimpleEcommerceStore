@@ -1,0 +1,42 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+            <defs>
+                <radialGradient id="ball">
+                    <stop offset="0" stop-color="#ffffff"/>
+                    <stop offset="1" stop-color="#cbd5e1"/>
+                </radialGradient>
+                <filter id="shadow">
+                    <feGaussianBlur stdDeviation="25"/>
+                </filter>
+            </defs>
+
+            <rect width="900" height="700" fill="#e2e8f0"/>
+            <ellipse cx="450" cy="560" rx="190" ry="40"
+                     fill="#334155" opacity=".3" filter="url(#shadow)"/>
+
+            <circle cx="450" cy="330" r="190"
+                    fill="url(#ball)"
+                    stroke="#64748b"
+                    stroke-width="10"/>
+
+            <polygon points="450,220 500,255 480,315 420,315 400,255"
+                     fill="#111827"/>
+
+            <path d="M450 220 L450 150
+                     M500 255 L570 225
+                     M480 315 L540 375
+                     M420 315 L360 375
+                     M400 255 L330 225"
+                  stroke="#111827"
+                  stroke-width="15"/>
+
+            <text x="450" y="625"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="27"
+                  font-weight="700"
+                  fill="#374151">
+                Football Premium
+            </text>
+        </svg>
+    

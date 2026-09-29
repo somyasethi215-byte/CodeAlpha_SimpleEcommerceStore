@@ -1,0 +1,53 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+            <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f8fafc"/>
+                    <stop offset="1" stop-color="#d1d5db"/>
+                </linearGradient>
+                <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0f172a"/>
+                    <stop offset="1" stop-color="#334155"/>
+                </linearGradient>
+                <filter id="shadow">
+                    <feGaussianBlur stdDeviation="20"/>
+                </filter>
+            </defs>
+
+            <rect width="900" height="700" fill="url(#bg)"/>
+            <ellipse cx="450" cy="570" rx="180" ry="35"
+                     fill="#475569" opacity=".3" filter="url(#shadow)"/>
+
+            <rect x="350" y="55" width="200" height="170"
+                  rx="55" fill="#111827"/>
+            <rect x="350" y="475" width="200" height="170"
+                  rx="55" fill="#111827"/>
+
+            <rect x="285" y="150" width="330" height="390"
+                  rx="75" fill="#1f2937"/>
+
+            <rect x="315" y="180" width="270" height="330"
+                  rx="55" fill="url(#screen)"/>
+
+            <circle cx="450" cy="345" r="85"
+                    fill="#2563eb" opacity=".3"/>
+
+            <text x="450" y="365"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="55"
+                  font-weight="700"
+                  fill="white">
+                10:28
+            </text>
+
+            <text x="450" y="625"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="27"
+                  font-weight="700"
+                  fill="#374151">
+                Watch Strap Premium
+            </text>
+        </svg>
+    

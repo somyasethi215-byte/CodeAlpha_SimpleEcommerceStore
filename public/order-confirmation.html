@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <a href="/index.html" class="brand">Simple Store</a>
+    <nav id="nav-links"></nav>
+  </header>
+
+  <main>
+    <div id="confirmation-container" class="card" style="max-width:600px;">Loading...</div>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('id');
+
+    async function loadOrder() {
+      const container = document.getElementById('confirmation-container');
+      try {
+        const order = await api(`/orders/${orderId}`);
+        container.innerHTML = `
+          <h2 class="success">Order placed successfully! 🎉</h2>
+          <p style="margin:0.75rem 0;">Order #${order.id} — ${new Date(order.created_at).toLocaleString()}</p>
+          <table>
+            <thead><tr><th>Product</th><th>Qty</th><th>Price</th></tr></thead>
+            <tbody>
+              ${order.items
+                .map(
+                  (i) => `<tr><td>${escapeHtml(i.name)}</td><td>${i.quantity}</td><td>${formatPrice(i.price_at_purchase)}</td></tr>`
+                )
+                .join('')}
+            </tbody>
+          </table>
+          <div class="cart-summary"><strong>${formatPrice(order.total)}</strong></div>
+          <p style="margin-top:1.5rem;"><a href="/index.html" class="btn" style="text-decoration:none;">Continue shopping</a></p>
+        `;
+      } catch (err) {
+        container.innerHTML = `<p class="error">${err.message}</p>`;
+      }
+    }
+
+    loadOrder();
+  </script>
+</body>
+</html>

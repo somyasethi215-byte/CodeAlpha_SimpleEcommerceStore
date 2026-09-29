@@ -1,0 +1,50 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+            <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f8fafc"/>
+                    <stop offset="1" stop-color="#e2e8f0"/>
+                </linearGradient>
+                <filter id="shadow">
+                    <feGaussianBlur stdDeviation="20"/>
+                </filter>
+            </defs>
+
+            <rect width="900" height="700" fill="url(#bg)"/>
+            <ellipse cx="450" cy="570" rx="270" ry="45"
+                     fill="#94a3b8" opacity=".35" filter="url(#shadow)"/>
+
+            <g transform="translate(205 125)">
+                <rect x="0" y="90" width="490" height="300" rx="35"
+                      fill="#dc2626"/>
+                <rect x="25" y="115" width="440" height="250" rx="25"
+                      fill="#fef2f2"/>
+
+                <rect x="175" y="45" width="140" height="55" rx="15"
+                      fill="#b91c1c"/>
+
+                <rect x="185" y="175" width="120" height="80" rx="12"
+                      fill="#dc2626"/>
+
+                <rect x="215" y="145" width="60" height="140"
+                      rx="8" fill="white"/>
+                <rect x="175" y="185" width="140" height="60"
+                      rx="8" fill="white"/>
+
+                <circle cx="100" cy="190" r="25" fill="#fee2e2"/>
+                <circle cx="390" cy="190" r="25" fill="#fee2e2"/>
+
+                <rect x="90" y="285" width="310" height="25"
+                      rx="12" fill="#fecaca"/>
+            </g>
+
+            <text x="450" y="625"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="27"
+                  font-weight="700"
+                  fill="#374151">
+                Emergency Kit Premium
+            </text>
+        </svg>
+    

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | ShopEase</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f7fb;
+        }
+
+        .checkout-wrapper {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 0 20px 60px;
+        }
+
+        .checkout-top {
+            margin-bottom: 28px;
+        }
+
+        .checkout-top h1 {
+            margin: 0 0 7px;
+            font-size: 32px;
+        }
+
+        .checkout-top p {
+            margin: 0;
+            color: #777;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) 380px;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .checkout-card {
+            background: #fff;
+            border: 1px solid #e7e9ee;
+            border-radius: 20px;
+            padding: 26px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .04);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 22px;
+            font-size: 19px;
+        }
+
+        .section-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111827;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1px solid #dfe2e7;
+            background: #fff;
+            border-radius: 11px;
+            padding: 13px 14px;
+            font-size: 14px;
+            outline: none;
+            transition: .2s;
+        }
+
+        .field textarea {
+            min-height: 95px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: #111827;
+            box-shadow: 0 0 0 3px rgba(17, 24, 39, .06);
+        }
+
+        /* PAYMENT */
+
+        .payment-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .payment-option {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border: 1px solid #dfe2e7;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .payment-option:hover {
+            border-color: #111827;
+        }
+
+        .payment-option.selected {
+            border-color: #111827;
+            background: #f8fafc;
+            box-shadow: 0 0 0 1px #111827;
+        }
+
+        .payment-option input {
+            width: 18px;
+            height: 18px;
+            accent-color: #111827;
+        }
+
+        .payment-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f3f6;
+            font-size: 21px;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-info strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .payment-info small {
+            color: #777;
+        }
+
+        .payment-check {
+            display: none;
+            font-size: 18px;
+        }
+
+        .payment-option.selected .payment-check {
+            display: block;
+        }
+
+        /* PAYMENT PANEL */
+
+        .payment-panel {
+            display: none;
+            margin-top: 15px;
+            padding: 18px;
+            border-radius: 13px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .payment-panel.active {
+            display: block;
+        }
+
+        .payment-panel h3 {
+            margin-top: 0;
+        }
+
+        .demo-note {
+            padding: 12px;
+            border-radius: 9px;
+            background: #fff7ed;
+            color: #9a3412;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .upi-box {
+            text-align: center;
+        }
+
+        .upi-id {
+            margin: 15px auto;
+            padding: 12px;
+            max-width: 280px;
+            border: 1px dashed #bbb;
+            border-radius: 9px;
+            background: white;
+            font-weight: 700;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .card-grid input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* SUMMARY */
+
+        .summary {
+            position: sticky;
+            top: 90px;
+        }
+
+        .summary-items {
+            max-height: 330px;
+            overflow-y: auto;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item img {
+            width: 58px;
+            height: 58px;
+            border-radius: 9px;
+            object-fit: cover;
+        }
+
+        .summary-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .summary-item-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .summary-item-qty {
+            color: #777;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .summary-item-price {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .coupon {
+            display: flex;
+            gap: 8px;
+            margin: 18px 0;
+        }
+
+        .coupon input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+        }
+
+        .coupon button {
+            border: 0;
+            border-radius: 9px;
+            padding: 0 14px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .coupon-message {
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 13px 0;
+            color: #555;
+        }
+
+        .summary-row strong {
+            color: #111;
+        }
+
+        .total {
+            border-top: 1px solid #ddd;
+            padding-top: 18px;
+            margin-top: 18px;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .pay-button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 16px;
+            border: 0;
+            border-radius: 12px;
+            background: #111827;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .pay-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .pay-button:disabled {
+            opacity: .6;
+            cursor: wait;
+            transform: none;
+        }
+
+        .secure {
+            text-align: center;
+            color: #777;
+            font-size: 11px;
+            margin-top: 12px;
+        }
+
+        .error {
+            display: none;
+            margin-bottom: 18px;
+            padding: 13px;
+            border-radius: 10px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-size: 13px;
+        }
+
+        /* SUCCESS MODAL */
+
+        .payment-success {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .payment-success.show {
+            display: flex;
+        }
+
+        .success-box {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .success-circle {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #dcfce7;
+            color: #15803d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+        }
+
+        .success-box button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        @media (max-width: 850px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .summary {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .checkout-card {
+                padding: 18px;
+            }
+
+            .checkout-top h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="cart.html">🛒 Cart</a>
+        <a href="orders.html">My Orders</a>
+    </nav>
+</header>
+
+<main class="checkout-wrapper">
+
+    <div class="checkout-top">
+        <h1>Secure Checkout</h1>
+        <p>Complete your details and choose your payment method.</p>
+    </div>
+
+    <div id="checkoutError" class="error"></div>
+
+    <div class="checkout-layout">
+
+        <!-- LEFT -->
+
+        <div>
+
+            <div class="checkout-card">
+
+                <h2 class="section-title">
+                    <span class="section-number">1</span>
+                    Delivery Details
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>Full Name</label>
+                        <input
+                            id="customerName"
+                            type="text"
+                            placeholder="Your full name">
+                    </div>
+
+                    <div class="field">
+                        <label>Phone Number</label>
+                        <input
+                            id="customerPhone"
+                            type="tel"
+                            maxlength="10"
+                            placeholder="10 digit mobile number">
+                    </div>
+
+                    <div class="field full">
+                        <label>Address</label>
+                        <textarea
+                            id="customerAddress"
+                            placeholder="House no., street, area"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label>City</label>
+                        <input
+                            id="customerCity"
+                            type="text"
+                            placeholder="City">
+                    </div>
+
+                    <div class="field">
+                        <label>Pincode</label>
+                        <input
+                            id="customerPincode"
+                            type="text"
+                            maxlength="6"
+                            placeholder="6 digit pincode">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="checkout-card">
+
+                <h2 class="section-title">
+                    <span class="section-number">2</span>
+                    Payment Method
+                </h2>
+
+                <div class="payment-list">
+
+                    <label
+                        class="payment-option selected"
+                        onclick="selectPayment('COD', this)">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="COD"
+                            checked>
+
+                        <span class="payment-icon">
+                            💵
+                        </span>
+
+                        <span class="payment-info">
+                            <strong>Cash on Delivery</strong>
+                            <small>Pay when your order arrives</small>
+                        </span>
+
+                        <span class="payment-check">
+                            ✓
+                        </span>
+
+                    </label>
+
+
+                    <label
+                        class="payment-option"
+                        onclick="selectPayment('UPI', this)">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI">
+
+                        <span class="payment-icon">
+                            📱
+                        </span>
+
+                        <span class="payment-info">
+                            <strong>UPI</strong>
+                            <small>Google Pay, PhonePe, Paytm</small>
+                        </span>
+
+                        <span class="payment-check">
+                            ✓
+                        </span>
+
+                    </label>
+
+
+                    <label
+                        class="payment-option"
+                        onclick="selectPayment('Card', this)">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Card">
+
+                        <span class="payment-icon">
+                            💳
+                        </span>
+
+                        <span class="payment-info">
+                            <strong>Credit / Debit Card</strong>
+                            <small>Visa, Mastercard, RuPay</small>
+                        </span>
+
+                        <span class="payment-check">
+                            ✓
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="codPanel"
+                    class="payment-panel active">
+
+                    <h3>Cash on Delivery</h3>
+
+                    <p>
+                        You will pay the delivery partner when
+                        your order arrives.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="upiPanel"
+                    class="payment-panel">
+
+                    <div class="upi-box">
+
+                        <h3>📱 UPI Payment</h3>
+
+                        <p>
+                            This is a demo payment screen for
+                            the college project.
+                        </p>
+
+                        <div class="upi-id">
+                            shopease@upi
+                        </div>
+
+                        <div class="demo-note">
+                            Demo mode: clicking
+                            <b>Pay & Place Order</b>
+                            will simulate a successful UPI payment.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="cardPanel"
+                    class="payment-panel">
+
+                    <h3>💳 Card Payment</h3>
+
+                    <div class="demo-note">
+                        Demo payment only. Do not enter a real
+                        card number.
+                    </div>
+
+                    <br>
+
+                    <div class="card-grid">
+
+                        <input
+                            id="demoCard"
+                            placeholder="Demo card number">
+
+                        <div class="card-row">
+
+                            <input
+                                id="demoExpiry"
+                                placeholder="MM/YY">
+
+                            <input
+                                id="demoCVV"
+                                placeholder="CVV">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <aside class="summary">
+
+            <div class="checkout-card">
+
+                <h2 class="section-title">
+                    Order Summary
+                </h2>
+
+                <div
+                    id="checkoutItems"
+                    class="summary-items">
+                </div>
+
+
+                <div class="coupon">
+
+                    <input
+                        id="couponInput"
+                        placeholder="Coupon code">
+
+                    <button onclick="applyCoupon()">
+                        Apply
+                    </button>
+
+                </div>
+
+                <div
+                    id="couponMessage"
+                    class="coupon-message">
+                </div>
+
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <strong id="subtotal">₹0</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Discount</span>
+                    <strong id="discount">₹0</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <strong>FREE</strong>
+                </div>
+
+
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <strong id="checkoutTotal">
+                        ₹0
+                    </strong>
+                </div>
+
+
+                <button
+                    id="payButton"
+                    class="pay-button"
+                    onclick="processPayment()">
+
+                    Place Order
+
+                </button>
+
+                <div class="secure">
+                    🔒 ShopEase demo checkout
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<!-- PAYMENT SUCCESS -->
+
+<div
+    id="paymentSuccess"
+    class="payment-success">
+
+    <div class="success-box">
+
+        <div class="success-circle">
+            ✓
+        </div>
+
+        <h2>Payment Successful</h2>
+
+        <p>
+            Your order is being placed...
+        </p>
+
+        <button onclick="finishOrder()">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="js/checkout.js"></script>
+
+</body>
+</html>

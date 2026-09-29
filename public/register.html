@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | ShopEase</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .auth-page {
+            min-height: calc(100vh - 76px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            background:
+                radial-gradient(circle at 20% 20%, #e9ecff, transparent 30%),
+                radial-gradient(circle at 80% 80%, #eeeeee, transparent 30%);
+        }
+
+        .auth-card {
+            width: min(440px, 100%);
+            padding: 42px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #e8e8e8;
+            border-radius: 26px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        }
+
+        .auth-logo {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .auth-logo span {
+            color: #777;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h1 {
+            font-size: 32px;
+            letter-spacing: -1.5px;
+            margin-bottom: 9px;
+        }
+
+        .auth-header p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 15px;
+            border: 1px solid #dedede;
+            border-radius: 12px;
+            outline: none;
+            background: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #111;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .auth-button {
+            height: 50px;
+            margin-top: 5px;
+            border: 0;
+            border-radius: 12px;
+            background: #111;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .auth-button:active {
+            transform: scale(0.98);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .auth-footer a {
+            color: #111;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .password-note {
+            color: #888;
+            font-size: 11px;
+            margin-top: -3px;
+        }
+
+        @media (max-width: 500px) {
+            .auth-card {
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+            Shop<span>Ease</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- REGISTER -->
+
+    <main class="auth-page">
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                Shop<span>Ease</span>
+            </div>
+
+            <div class="auth-header">
+
+                <h1>Create account</h1>
+
+                <p>
+                    Join ShopEase and start shopping today.
+                </p>
+
+            </div>
+
+
+            <form
+                id="registerForm"
+                class="auth-form"
+            >
+
+                <div class="form-group">
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                    <span class="password-note">
+                        Password must contain at least 6 characters.
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                >
+                    Create Account →
+                </button>
+
+            </form>
+
+
+            <div class="auth-footer">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>
+```
+
+After saving, open:
+
+```text
+http://localhost:5000/register.html
+```
+
+Register with a new email and a password of **at least 6 characters**.
+
+Then it should automatically save the login token and take you to the homepage.

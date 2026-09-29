@@ -1,0 +1,3459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ShopEase — Modern Store</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#f6f7f4;color:#111318}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+
+.top{
+    background:#111318;
+    color:#fff;
+    text-align:center;
+    padding:9px;
+    font-size:13px
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#fff;
+    border-bottom:1px solid #e6e8e3
+}
+
+.head{
+    max-width:1240px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    padding:17px 22px
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:-1px
+}
+
+.logo span{color:#3157ff}
+
+.nav{
+    display:flex;
+    gap:20px
+}
+
+.nav button{
+    background:none;
+    color:#555;
+    font-weight:600
+}
+
+.nav button:hover{color:#3157ff}
+
+.search{
+    flex:1;
+    position:relative
+}
+
+.search input{
+    width:100%;
+    padding:13px 16px 13px 42px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    outline:0;
+    background:#f7f7f5
+}
+
+.search input:focus{border-color:#3157ff}
+
+.search:before{
+    content:'⌕';
+    position:absolute;
+    left:15px;
+    top:9px;
+    font-size:22px;
+    color:#777
+}
+
+.actions{
+    display:flex;
+    gap:8px
+}
+
+.icon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#f4f5f2;
+    position:relative
+}
+
+.badge{
+    position:absolute;
+    right:-3px;
+    top:-5px;
+    background:#3157ff;
+    color:#fff;
+    border-radius:20px;
+    font-size:10px;
+    padding:3px 6px
+}
+
+.main{
+    max-width:1240px;
+    margin:auto;
+    padding:28px 22px 70px
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    min-height:430px;
+    border-radius:28px;
+    overflow:hidden;
+    background:#dff0d0
+}
+
+.heroText{padding:55px}
+
+.eyebrow{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-weight:800;
+    color:#3157ff
+}
+
+.hero h1{
+    font-size:clamp(40px,5vw,68px);
+    line-height:.98;
+    margin:15px 0
+}
+
+.hero p{
+    font-size:17px;
+    color:#5d625f;
+    max-width:560px;
+    line-height:1.6
+}
+
+.primary{
+    background:#111318;
+    color:#fff;
+    padding:14px 22px;
+    border-radius:12px;
+    font-weight:800
+}
+
+.secondary{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:13px 20px;
+    border-radius:12px;
+    font-weight:700
+}
+
+.heroBtns{
+    display:flex;
+    gap:10px;
+    margin-top:25px
+}
+
+.heroImg{
+    min-height:320px;
+    background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85') center/cover
+}
+
+.trust{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:18px 0 38px
+}
+
+.trust div,
+.card{
+    background:#fff;
+    border:1px solid #e7e8e4;
+    border-radius:18px;
+    padding:18px
+}
+
+.trust b{
+    display:block;
+    margin-bottom:5px
+}
+
+.muted{
+    color:#70757d;
+    font-size:14px
+}
+
+.sectionHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin:35px 0 16px
+}
+
+.sectionHead h2{
+    margin:0;
+    font-size:28px
+}
+
+.cats{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px
+}
+
+.cat{
+    height:140px;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+    background:linear-gradient(135deg,#f4f1ff,#eef2ff);
+    border:1px solid #e5e7eb;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:18px;
+    transition:.2s
+}
+
+.cat:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(17,24,39,.10)
+}
+
+.cat strong{
+    font-size:18px;
+    color:#111827
+}
+
+.cat span{
+    display:block;
+    font-size:13px;
+    margin-top:6px;
+    color:#70757d
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px
+}
+
+.product{
+    background:#fff;
+    border:1px solid #e6e8e3;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.2s
+}
+
+.product:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px #11131812
+}
+
+.pic{
+    height:220px;
+    background:#f2f3f0;
+    position:relative
+}
+
+.pic img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block
+}
+
+.heart{
+    position:absolute;
+    right:10px;
+    top:10px;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#fff;
+    z-index:2
+}
+
+.pbody{padding:15px}
+
+.catname{
+    font-size:11px;
+    text-transform:uppercase;
+    color:#777;
+    letter-spacing:1px
+}
+
+.pname{
+    font-weight:800;
+    margin:7px 0;
+    min-height:40px
+}
+
+.price{
+    font-size:18px;
+    font-weight:900
+}
+
+.pfoot{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:12px;
+    gap:8px
+}
+
+.add{
+    background:#111318;
+    color:#fff;
+    border-radius:10px;
+    padding:9px 12px;
+    font-weight:700
+}
+
+.promo{
+    margin:45px 0;
+    background:#111318;
+    color:#fff;
+    border-radius:25px;
+    padding:38px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+
+.promo h2{
+    font-size:32px;
+    margin:0 0 8px
+}
+
+.pageTitle{
+    font-size:40px;
+    margin:10px 0 25px
+}
+
+.filters{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px
+}
+
+.filters input,
+.filters select,
+.form input,
+.form textarea,
+.form select{
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:11px;
+    background:#fff;
+    outline:0
+}
+
+.filters input{
+    flex:1;
+    min-width:220px
+}
+
+.detail{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px
+}
+
+.detailImg{
+    height:550px;
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden
+}
+
+.detailImg img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block
+}
+
+.detailInfo{padding:20px}
+
+.detailInfo h1{
+    font-size:42px;
+    line-height:1.05
+}
+
+.detailPrice{
+    font-size:30px;
+    font-weight:900;
+    margin:20px 0
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:20px 0
+}
+
+.qty button{
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    background:#eee
+}
+
+.cartLayout{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:20px
+}
+
+.row{
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid #eee;
+    align-items:center
+}
+
+.row img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:12px;
+    background:#f2f3f0
+}
+
+.rowInfo{flex:1}
+
+.summary{
+    position:sticky;
+    top:100px
+}
+
+.line{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0
+}
+
+.total{
+    font-size:22px;
+    font-weight:900;
+    border-top:1px solid #ddd;
+    margin-top:10px;
+    padding-top:14px
+}
+
+.formGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px
+}
+
+.form{
+    display:grid;
+    gap:14px
+}
+
+.form textarea{
+    min-height:100px;
+    resize:vertical
+}
+
+.checkout{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:22px
+}
+
+.empty{
+    text-align:center;
+    padding:70px 20px;
+    background:#fff;
+    border-radius:20px;
+    border:1px solid #e6e8e3
+}
+
+.order{
+    background:#fff;
+    border:1px solid #e5e7e2;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:12px
+}
+
+.status{
+    display:inline-block;
+    background:#eaf6df;
+    color:#36751e;
+    border-radius:20px;
+    padding:5px 10px;
+    font-size:12px;
+    font-weight:800
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px
+}
+
+.tabs button{
+    padding:10px 15px;
+    border-radius:10px;
+    background:#eee
+}
+
+.tabs .active{
+    background:#111318;
+    color:#fff
+}
+
+.footer{
+    background:#111318;
+    color:#fff;
+    padding:45px 22px
+}
+
+.footerIn{
+    max-width:1240px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px
+}
+
+.footer p{
+    color:#aeb1b5;
+    line-height:1.6
+}
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#111318;
+    color:#fff;
+    padding:14px 18px;
+    border-radius:12px;
+    z-index:99;
+    display:none
+}
+
+.mobileNav{display:none}
+
+.loading{
+    text-align:center;
+    padding:80px
+}
+
+.notice{
+    padding:13px;
+    background:#fff5d6;
+    border:1px solid #f0db8a;
+    border-radius:12px;
+    margin-bottom:15px
+}
+
+@media(max-width:1050px){
+    .nav{display:none}
+
+    .cats{
+        grid-template-columns:repeat(3,1fr)
+    }
+
+    .grid{
+        grid-template-columns:repeat(3,1fr)
+    }
+
+    .hero{
+        grid-template-columns:1fr
+    }
+
+    .heroImg{
+        display:none
+    }
+
+    .trust{
+        grid-template-columns:repeat(2,1fr)
+    }
+
+    .cartLayout,
+    .checkout{
+        grid-template-columns:1fr
+    }
+
+    .summary{
+        position:static
+    }
+
+    .footerIn{
+        grid-template-columns:2fr 1fr 1fr
+    }
+}
+
+@media(max-width:720px){
+    .head{
+        padding:12px 15px
+    }
+
+    .actions .hideMob{
+        display:none
+    }
+
+    .main{
+        padding:18px 14px 90px
+    }
+
+    .heroText{
+        padding:34px 24px
+    }
+
+    .hero h1{
+        font-size:43px
+    }
+
+    .trust,
+    .cats,
+    .grid{
+        grid-template-columns:repeat(2,1fr)
+    }
+
+    .cat{
+        height:130px
+    }
+
+    .pic{
+        height:180px
+    }
+
+    .detail{
+        grid-template-columns:1fr
+    }
+
+    .detailImg{
+        height:360px
+    }
+
+    .detailInfo{
+        padding:0
+    }
+
+    .detailInfo h1{
+        font-size:32px
+    }
+
+    .formGrid{
+        grid-template-columns:1fr
+    }
+
+    .footerIn{
+        grid-template-columns:1fr 1fr
+    }
+
+    .mobileNav{
+        position:fixed;
+        display:grid;
+        grid-template-columns:repeat(5,1fr);
+        bottom:0;
+        left:0;
+        right:0;
+        background:#fff;
+        border-top:1px solid #ddd;
+        z-index:30
+    }
+
+    .mobileNav button{
+        background:#fff;
+        padding:12px 4px;
+        font-size:11px
+    }
+
+    .row img{
+        width:70px;
+        height:70px
+    }
+
+    .pname{
+        min-height:auto
+    }
+
+    .promo{
+        padding:25px;
+        display:block
+    }
+
+    .search{
+        display:none
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+    Free shipping on orders over ₹999 • Secure checkout • Easy returns
+</div>
+
+<header class="header">
+    <div class="head">
+
+        <button class="logo" onclick="go('home')">
+            Shop<span>Ease</span>
+        </button>
+
+        <nav class="nav">
+            <button onclick="go('home')">Home</button>
+            <button onclick="go('shop')">Shop</button>
+            <button onclick="go('categories')">Categories</button>
+            <button onclick="go('orders')">Orders</button>
+        </nav>
+
+        <div class="search">
+            <input
+                id="globalSearch"
+                placeholder="Search products..."
+                onkeydown="if(event.key==='Enter')go('shop',this.value)"
+            >
+        </div>
+
+        <div class="actions">
+
+            <button class="icon hideMob" onclick="go('wishlist')">
+                ♡
+                <span class="badge" id="wishBadge">0</span>
+            </button>
+
+            <button class="icon" onclick="go('cart')">
+                🛒
+                <span class="badge" id="cartBadge">0</span>
+            </button>
+
+            <button class="icon" onclick="go('account')">
+                ♙
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+<main class="main" id="app"></main>
+
+<footer class="footer">
+
+    <div class="footerIn">
+
+        <div>
+            <div class="logo">
+                Shop<span>Ease</span>
+            </div>
+
+            <p>
+                A modern full-stack e-commerce store built with
+                HTML, CSS, JavaScript, Express.js and SQLite.
+            </p>
+        </div>
+
+        <div>
+            <b>Shop</b>
+
+            <p>
+                <button onclick="go('shop')">
+                    All Products
+                </button>
+                <br>
+
+                <button onclick="go('categories')">
+                    Categories
+                </button>
+            </p>
+        </div>
+
+        <div>
+            <b>Account</b>
+
+            <p>
+                <button onclick="go('account')">
+                    Login
+                </button>
+                <br>
+
+                <button onclick="go('orders')">
+                    Orders
+                </button>
+            </p>
+        </div>
+
+        <div>
+            <b>Support</b>
+
+            <p>
+                Secure checkout<br>
+                Easy returns<br>
+                Fast delivery
+            </p>
+        </div>
+
+    </div>
+
+</footer>
+
+<div class="mobileNav">
+
+    <button onclick="go('home')">
+        ⌂<br>Home
+    </button>
+
+    <button onclick="go('shop')">
+        ⌕<br>Shop
+    </button>
+
+    <button onclick="go('wishlist')">
+        ♡<br>Wishlist
+    </button>
+
+    <button onclick="go('cart')">
+        🛒<br>Cart
+    </button>
+
+    <button onclick="go('account')">
+        ♙<br>Account
+    </button>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+const API = '/api';
+
+let products = [];
+
+let cart =
+    JSON.parse(
+        localStorage.getItem('shopease_cart') || '[]'
+    );
+
+let wishlist =
+    JSON.parse(
+        localStorage.getItem('shopease_wishlist') || '[]'
+    ).map(Number);
+
+let token =
+    localStorage.getItem('shopease_token') || '';
+
+let user =
+    JSON.parse(
+        localStorage.getItem('shopease_user') || 'null'
+    );
+
+let mode = 'login';
+let dq = 1;
+let rendering = false;
+
+
+/* =========================
+   IMAGE HANDLING
+========================= */
+
+function img(product){
+
+    /*
+       IMPORTANT:
+       Always use the image path stored
+       in the database.
+
+       Example:
+       /images/products/product-613.svg
+    */
+
+    if(
+        product &&
+        product.image &&
+        String(product.image).trim()
+    ){
+        return String(product.image).trim();
+    }
+
+    return '';
+}
+
+
+/* =========================
+   BASIC HELPERS
+========================= */
+
+function esc(value){
+
+    return String(value ?? '').replace(
+        /[&<>'"]/g,
+        function(match){
+
+            return {
+                '&':'&amp;',
+                '<':'&lt;',
+                '>':'&gt;',
+                "'":'&#39;',
+                '"':'&quot;'
+            }[match];
+
+        }
+    );
+}
+
+
+function money(number){
+
+    return '₹' +
+        Number(number || 0)
+        .toLocaleString('en-IN');
+
+}
+
+
+/* =========================
+   API
+========================= */
+
+async function api(path, options = {}){
+
+    const headers = {
+        'Content-Type': 'application/json',
+        ...(options.headers || {})
+    };
+
+    if(token){
+        headers.Authorization = 'Bearer ' + token;
+    }
+
+    const response = await fetch(
+        API + path,
+        {
+            ...options,
+            headers
+        }
+    );
+
+    let data = {};
+
+    try{
+        data = await response.json();
+    }catch(error){
+        data = {};
+    }
+
+    if(!response.ok){
+        throw new Error(
+            data.message ||
+            data.error ||
+            `Request failed (${response.status})`
+        );
+    }
+
+    return data;
+}
+
+
+/* =========================
+   LOAD PRODUCTS
+========================= */
+
+async function load(){
+
+    try{
+
+        const data = await api('/products?limit=1000');
+
+        /*
+           Backend returns:
+
+           {
+               value: [...products],
+               Count: 613
+           }
+
+           So we must read data.value.
+        */
+
+        const list =
+            Array.isArray(data)
+                ? data
+                : Array.isArray(data.value)
+                    ? data.value
+                    : Array.isArray(data.products)
+                        ? data.products
+                        : Array.isArray(data.data)
+                            ? data.data
+                            : [];
+
+        products = list.map(function(product){
+
+            return {
+                ...product,
+
+                id: Number(product.id),
+
+                price: Number(product.price) || 0,
+
+                image: String(product.image || '').trim()
+            };
+
+        });
+
+        console.log(
+            'ShopEase products loaded:',
+            products.length
+        );
+
+    }catch(error){
+
+        console.error(
+            'Product loading error:',
+            error
+        );
+
+        products = [];
+
+        toast(
+            'Products could not be loaded'
+        );
+    }
+}
+
+/* =========================
+   STORAGE
+========================= */
+
+function save(){
+
+    localStorage.setItem(
+        'shopease_cart',
+        JSON.stringify(cart)
+    );
+
+    localStorage.setItem(
+        'shopease_wishlist',
+        JSON.stringify(wishlist)
+    );
+
+    updateBadges();
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+function updateBadges(){
+
+    const cartBadge =
+        document.getElementById('cartBadge');
+
+    const wishBadge =
+        document.getElementById('wishBadge');
+
+    if(cartBadge){
+
+        cartBadge.textContent =
+            cart.reduce(
+                (sum,item) =>
+                    sum + Number(item.qty || 0),
+                0
+            );
+
+    }
+
+    if(wishBadge){
+
+        wishBadge.textContent =
+            wishlist.length;
+
+    }
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message){
+
+    const element =
+        document.getElementById('toast');
+
+    if(!element)return;
+
+    element.textContent = message;
+
+    element.style.display = 'block';
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+        setTimeout(
+            function(){
+                element.style.display = 'none';
+            },
+            2200
+        );
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function go(page, query = ''){
+
+    location.hash =
+        page +
+        (
+            query !== ''
+                ? '/' + encodeURIComponent(query)
+                : ''
+        );
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+
+}
+
+
+function route(){
+
+    const parts =
+        location.hash
+        .replace(/^#/,'')
+        .split('/');
+
+    return [
+        parts[0] || 'home',
+        decodeURIComponent(
+            parts.slice(1).join('/')
+        )
+    ];
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function add(id, quantity = 1){
+
+    id = Number(id);
+
+    const product =
+        products.find(
+            item => item.id === id
+        );
+
+    if(!product){
+
+        toast('Product not found');
+
+        return;
+    }
+
+    const existing =
+        cart.find(
+            item => Number(item.id) === id
+        );
+
+    if(existing){
+
+        existing.qty += quantity;
+
+    }
+    else{
+
+        cart.push({
+            id:id,
+            qty:quantity
+        });
+
+    }
+
+    save();
+
+    toast('Added to cart');
+
+}
+
+
+function change(id, amount){
+
+    const item =
+        cart.find(
+            x => Number(x.id) === Number(id)
+        );
+
+    if(!item)return;
+
+    item.qty += amount;
+
+    if(item.qty <= 0){
+
+        cart =
+            cart.filter(
+                x => Number(x.id) !== Number(id)
+            );
+
+    }
+
+    save();
+
+    render();
+
+}
+
+
+/* =========================
+   WISHLIST
+========================= */
+
+function wish(id){
+
+    id = Number(id);
+
+    if(wishlist.includes(id)){
+
+        wishlist =
+            wishlist.filter(
+                x => x !== id
+            );
+
+    }
+    else{
+
+        wishlist.push(id);
+
+    }
+
+    save();
+
+    render();
+
+}
+
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+function productCard(product){
+
+    const saved =
+        wishlist.includes(
+            Number(product.id)
+        );
+
+    const image =
+        img(product);
+
+    return `
+
+        <article class="product">
+
+            <div class="pic">
+
+                ${
+                    image
+                    ?
+                    `
+                    <img
+                        src="${esc(image)}"
+                        alt="${esc(product.name)}"
+                        loading="lazy"
+                        onerror="
+                            this.onerror=null;
+                            this.style.display='none';
+                        "
+                    >
+                    `
+                    :
+                    `
+                    <div style="
+                        height:100%;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        color:#777;
+                        font-size:14px;
+                    ">
+                        Image unavailable
+                    </div>
+                    `
+                }
+
+                <button
+                    class="heart"
+                    onclick="wish(${product.id})"
+                >
+                    ${saved ? '♥' : '♡'}
+                </button>
+
+            </div>
+
+            <div class="pbody">
+
+                <div class="catname">
+                    ${esc(product.category || 'Product')}
+                </div>
+
+                <div class="pname">
+                    ${esc(product.name)}
+                </div>
+
+                <div class="pfoot">
+
+                    <span class="price">
+                        ${money(product.price)}
+                    </span>
+
+                    <div>
+
+                        <button
+                            class="secondary"
+                            style="padding:8px 10px;margin-right:5px"
+                            onclick="go('product',${product.id})"
+                        >
+                            View
+                        </button>
+
+                        <button
+                            class="add"
+                            onclick="add(${product.id})"
+                        >
+                            Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function home(){
+
+    const featured =
+        products.slice(0,8);
+
+    return `
+
+        <section class="hero">
+
+            <div class="heroText">
+
+                <div class="eyebrow">
+                    Curated shopping
+                </div>
+
+                <h1>
+                    Everything you need.
+                    One beautiful store.
+                </h1>
+
+                <p>
+                    Discover everyday essentials,
+                    tech, fashion, beauty, home products
+                    and more — with a clean shopping
+                    experience from browsing to checkout.
+                </p>
+
+                <div class="heroBtns">
+
+                    <button
+                        class="primary"
+                        onclick="go('shop')"
+                    >
+                        Shop now
+                    </button>
+
+                    <button
+                        class="secondary"
+                        onclick="go('categories')"
+                    >
+                        Explore categories
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="heroImg"></div>
+
+        </section>
+
+
+        <section class="trust">
+
+            <div>
+                <b>Fast delivery</b>
+                <span class="muted">
+                    Reliable doorstep delivery
+                </span>
+            </div>
+
+            <div>
+                <b>Secure checkout</b>
+                <span class="muted">
+                    Protected order processing
+                </span>
+            </div>
+
+            <div>
+                <b>Easy returns</b>
+                <span class="muted">
+                    Simple return experience
+                </span>
+            </div>
+
+            <div>
+                <b>600+ products</b>
+                <span class="muted">
+                    A growing catalog
+                </span>
+            </div>
+
+        </section>
+
+
+        <div class="sectionHead">
+
+            <h2>
+                Shop by category
+            </h2>
+
+            <button
+                class="secondary"
+                onclick="go('categories')"
+            >
+                View all
+            </button>
+
+        </div>
+
+
+        <div class="cats">
+            ${categoryCards().join('')}
+        </div>
+
+
+        <div class="sectionHead">
+
+            <h2>
+                Trending products
+            </h2>
+
+            <button
+                class="secondary"
+                onclick="go('shop')"
+            >
+                See all
+            </button>
+
+        </div>
+
+
+        ${
+            featured.length
+            ?
+            `
+            <div class="grid">
+                ${featured.map(productCard).join('')}
+            </div>
+            `
+            :
+            `
+            <div class="empty">
+                No products available.
+            </div>
+            `
+        }
+
+
+        <div class="promo">
+
+            <div>
+
+                <h2>
+                    Free shipping over ₹999
+                </h2>
+
+                <span>
+                    Build your cart and save on delivery.
+                </span>
+
+            </div>
+
+            <button
+                class="secondary"
+                onclick="go('shop')"
+            >
+                Start shopping
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   SHOP
+========================= */
+
+function shop(query = '', category = ''){
+
+    const categories =
+        [
+            ...new Set(
+                products
+                    .map(p => String(p.category || '').trim())
+                    .filter(Boolean)
+            )
+        ].sort(
+            (a,b) =>
+                a.localeCompare(b)
+        );
+
+
+    const initial =
+        products.filter(function(product){
+
+            const text =
+                `
+                ${product.name}
+                ${product.category}
+                ${product.description || ''}
+                `.toLowerCase();
+
+            const matchesSearch =
+                !query ||
+                text.includes(
+                    query.toLowerCase()
+                );
+
+            const matchesCategory =
+                !category ||
+                String(product.category || '')
+                    .toLowerCase() ===
+                category.toLowerCase();
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+
+        });
+
+
+    return `
+
+        <div class="sectionHead">
+
+            <div>
+
+                <div class="eyebrow">
+                    Collection
+                </div>
+
+                <h1 class="pageTitle">
+                    Shop all products
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="filters">
+
+            <input
+                id="shopSearch"
+                value="${esc(query)}"
+                placeholder="Search products..."
+                oninput="filterShop()"
+            >
+
+
+            <select
+                id="catFilter"
+                onchange="filterShop()"
+            >
+
+                <option value="">
+                    All categories
+                </option>
+
+                ${categories.map(function(categoryName){
+
+                    return `
+
+                        <option
+                            value="${esc(categoryName)}"
+                            ${
+                                categoryName.toLowerCase()
+                                === category.toLowerCase()
+                                ? 'selected'
+                                : ''
+                            }
+                        >
+                            ${esc(categoryName)}
+                        </option>
+
+                    `;
+
+                }).join('')}
+
+            </select>
+
+
+            <select
+                id="sortFilter"
+                onchange="filterShop()"
+            >
+
+                <option value="">
+                    Sort
+                </option>
+
+                <option value="low">
+                    Price: low to high
+                </option>
+
+                <option value="high">
+                    Price: high to low
+                </option>
+
+                <option value="name">
+                    Name A-Z
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            id="shopGrid"
+            class="grid"
+        >
+
+            ${
+                initial.map(productCard).join('')
+                ||
+                `
+                <div class="empty">
+                    No products found.
+                </div>
+                `
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+function filterShop(){
+
+    const search =
+        (
+            document.getElementById(
+                'shopSearch'
+            )?.value || ''
+        ).toLowerCase();
+
+    const category =
+        document.getElementById(
+            'catFilter'
+        )?.value || '';
+
+    const sort =
+        document.getElementById(
+            'sortFilter'
+        )?.value || '';
+
+
+    let list =
+        products.filter(function(product){
+
+            const text =
+                `
+                ${product.name}
+                ${product.category}
+                ${product.description || ''}
+                `.toLowerCase();
+
+            return (
+                (
+                    !search ||
+                    text.includes(search)
+                )
+                &&
+                (
+                    !category ||
+                    String(product.category || '') === category
+                )
+            );
+
+        });
+
+
+    if(sort === 'low'){
+
+        list.sort(
+            (a,b) => a.price - b.price
+        );
+
+    }
+
+    if(sort === 'high'){
+
+        list.sort(
+            (a,b) => b.price - a.price
+        );
+
+    }
+
+    if(sort === 'name'){
+
+        list.sort(
+            (a,b) =>
+                String(a.name)
+                    .localeCompare(
+                        String(b.name)
+                    )
+        );
+
+    }
+
+
+    const grid =
+        document.getElementById(
+            'shopGrid'
+        );
+
+    if(grid){
+
+        grid.innerHTML =
+            list.map(productCard).join('')
+            ||
+            `
+            <div class="empty">
+                No products found.
+            </div>
+            `;
+
+    }
+
+}
+
+
+/* =========================
+   REAL DATABASE CATEGORIES
+========================= */
+
+function categoryCards(){
+
+    const categoryList =
+        [
+            ...new Set(
+                products
+                    .map(function(product){
+
+                        return String(
+                            product.category || ''
+                        ).trim();
+
+                    })
+                    .filter(Boolean)
+            )
+        ].sort(
+            (a,b) =>
+                a.localeCompare(b)
+        );
+
+
+    return categoryList.map(
+        function(category){
+
+            return `
+
+                <div
+                    class="cat"
+                    onclick="go('shop',${JSON.stringify(category)})"
+                >
+
+                    <strong>
+                        ${esc(category)}
+                    </strong>
+
+                    <span>
+                        Browse products
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+function categories(){
+
+    const categoryList =
+        [
+            ...new Set(
+                products
+                    .map(function(product){
+
+                        return String(
+                            product.category || ''
+                        ).trim();
+
+                    })
+                    .filter(Boolean)
+            )
+        ].sort(
+            (a,b) =>
+                a.localeCompare(b)
+        );
+
+
+    return `
+
+        <div class="eyebrow">
+            Explore
+        </div>
+
+        <h1 class="pageTitle">
+            Categories
+        </h1>
+
+        ${
+            categoryList.length
+            ?
+            `
+            <div class="cats">
+                ${categoryCards().join('')}
+            </div>
+            `
+            :
+            `
+            <div class="empty">
+                <h2>
+                    No categories available
+                </h2>
+
+                <p class="muted">
+                    Products have not returned
+                    category information yet.
+                </p>
+            </div>
+            `
+        }
+
+    `;
+
+}
+
+
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
+function detail(id){
+
+    const product =
+        products.find(
+            item => item.id === Number(id)
+        );
+
+
+    if(!product){
+
+        return `
+
+            <div class="empty">
+
+                <h2>
+                    Product not found
+                </h2>
+
+                <button
+                    class="primary"
+                    onclick="go('shop')"
+                >
+                    Back to shop
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    dq = 1;
+
+    const image =
+        img(product);
+
+
+    return `
+
+        <div class="detail">
+
+            <div class="detailImg">
+
+                ${
+                    image
+                    ?
+                    `
+                    <img
+                        src="${esc(image)}"
+                        alt="${esc(product.name)}"
+                        onerror="
+                            this.onerror=null;
+                            this.style.display='none';
+                        "
+                    >
+                    `
+                    :
+                    `
+                    <div style="
+                        height:100%;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        color:#777;
+                    ">
+                        Image unavailable
+                    </div>
+                    `
+                }
+
+            </div>
+
+
+            <div class="detailInfo">
+
+                <div class="catname">
+                    ${esc(product.category || 'Product')}
+                </div>
+
+                <h1>
+                    ${esc(product.name)}
+                </h1>
+
+                <div class="detailPrice">
+                    ${money(product.price)}
+                </div>
+
+                <p
+                    class="muted"
+                    style="font-size:16px;line-height:1.7"
+                >
+                    ${esc(
+                        product.description ||
+                        'A quality product selected for the ShopEase collection.'
+                    )}
+                </p>
+
+
+                <div class="qty">
+
+                    <button onclick="detailQty(-1)">
+                        −
+                    </button>
+
+                    <b id="dq">
+                        1
+                    </b>
+
+                    <button onclick="detailQty(1)">
+                        +
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="primary"
+                    onclick="addDetail(${product.id})"
+                >
+                    Add to cart
+                </button>
+
+
+                <button
+                    class="secondary"
+                    style="margin-left:8px"
+                    onclick="wish(${product.id})"
+                >
+                    ${
+                        wishlist.includes(product.id)
+                        ? '♥ Saved'
+                        : '♡ Wishlist'
+                    }
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function detailQty(number){
+
+    dq =
+        Math.max(
+            1,
+            dq + number
+        );
+
+    const element =
+        document.getElementById('dq');
+
+    if(element){
+        element.textContent = dq;
+    }
+
+}
+
+
+function addDetail(id){
+
+    add(id,dq);
+
+    dq = 1;
+
+}
+
+
+/* =========================
+   CART PAGE
+========================= */
+
+function cartPage(){
+
+    if(!cart.length){
+
+        return `
+
+            <div class="empty">
+
+                <h2>
+                    Your cart is empty
+                </h2>
+
+                <p class="muted">
+                    Add something you like
+                    and it will appear here.
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="go('shop')"
+                >
+                    Shop products
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    const valid =
+        cart.filter(function(item){
+
+            return products.some(
+                product =>
+                    product.id === Number(item.id)
+            );
+
+        });
+
+
+    if(
+        valid.length !== cart.length
+    ){
+
+        cart = valid;
+
+        save();
+
+    }
+
+
+    const subtotal =
+        cart.reduce(
+            function(sum,item){
+
+                const product =
+                    products.find(
+                        p =>
+                            p.id === Number(item.id)
+                    );
+
+                return (
+                    sum +
+                    (
+                        product
+                        ? product.price * item.qty
+                        : 0
+                    )
+                );
+
+            },
+            0
+        );
+
+
+    const shipping =
+        subtotal >= 999
+        ? 0
+        : 79;
+
+
+    return `
+
+        <h1 class="pageTitle">
+            Your cart
+        </h1>
+
+
+        <div class="cartLayout">
+
+            <div class="card">
+
+                ${
+                    cart.map(function(item){
+
+                        const product =
+                            products.find(
+                                p =>
+                                    p.id === Number(item.id)
+                            );
+
+                        if(!product)return '';
+
+                        const image =
+                            img(product);
+
+                        return `
+
+                            <div class="row">
+
+                                ${
+                                    image
+                                    ?
+                                    `
+                                    <img
+                                        src="${esc(image)}"
+                                        alt="${esc(product.name)}"
+                                        onerror="
+                                            this.onerror=null;
+                                            this.style.display='none';
+                                        "
+                                    >
+                                    `
+                                    :
+                                    `
+                                    <div style="
+                                        width:90px;
+                                        height:90px;
+                                        border-radius:12px;
+                                        background:#f2f3f0;
+                                        display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                        font-size:11px;
+                                        color:#777;
+                                        text-align:center;
+                                    ">
+                                        Image unavailable
+                                    </div>
+                                    `
+                                }
+
+
+                                <div class="rowInfo">
+
+                                    <b>
+                                        ${esc(product.name)}
+                                    </b>
+
+                                    <div class="muted">
+                                        ${money(product.price)}
+                                        each
+                                    </div>
+
+
+                                    <div class="qty">
+
+                                        <button
+                                            onclick="change(${product.id},-1)"
+                                        >
+                                            −
+                                        </button>
+
+                                        <b>
+                                            ${item.qty}
+                                        </b>
+
+                                        <button
+                                            onclick="change(${product.id},1)"
+                                        >
+                                            +
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+
+                                <b>
+                                    ${money(
+                                        product.price *
+                                        item.qty
+                                    )}
+                                </b>
+
+
+                                <button
+                                    class="secondary"
+                                    onclick="change(${product.id},-999)"
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        `;
+
+                    }).join('')
+
+                }
+
+            </div>
+
+
+            <aside class="card summary">
+
+                <h2>
+                    Summary
+                </h2>
+
+                <div class="line">
+                    <span>Subtotal</span>
+                    <b>${money(subtotal)}</b>
+                </div>
+
+                <div class="line">
+                    <span>Shipping</span>
+                    <b>
+                        ${
+                            shipping
+                            ? money(shipping)
+                            : 'Free'
+                        }
+                    </b>
+                </div>
+
+                <div class="total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span style="float:right">
+                        ${money(
+                            subtotal + shipping
+                        )}
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="primary"
+                    style="width:100%;margin-top:18px"
+                    onclick="go('checkout')"
+                >
+                    Proceed to checkout
+                </button>
+
+            </aside>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   WISHLIST
+========================= */
+
+function wishlistPage(){
+
+    const list =
+        products.filter(
+            product =>
+                wishlist.includes(
+                    product.id
+                )
+        );
+
+
+    return `
+
+        <h1 class="pageTitle">
+            Wishlist
+        </h1>
+
+
+        ${
+            list.length
+            ?
+            `
+            <div class="grid">
+                ${list.map(productCard).join('')}
+            </div>
+            `
+            :
+            `
+            <div class="empty">
+
+                <h2>
+                    Your wishlist is empty
+                </h2>
+
+                <p class="muted">
+                    Save products you want to revisit.
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="go('shop')"
+                >
+                    Explore products
+                </button>
+
+            </div>
+            `
+        }
+
+    `;
+
+}
+
+
+/* =========================
+   ACCOUNT
+========================= */
+
+function account(){
+
+    if(user){
+
+        return `
+
+            <h1 class="pageTitle">
+                Account
+            </h1>
+
+            <div class="card">
+
+                <h2>
+                    Welcome
+                    ${
+                        user.name
+                        ? ' ' + esc(user.name)
+                        : ''
+                    }
+                </h2>
+
+                <p class="muted">
+                    ${esc(user.email || '')}
+                    <br>
+                    You are signed in to ShopEase.
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="go('orders')"
+                >
+                    View orders
+                </button>
+
+                <button
+                    class="secondary"
+                    onclick="logout()"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <h1 class="pageTitle">
+            Account
+        </h1>
+
+        <div
+            class="card"
+            style="max-width:520px;margin:auto"
+        >
+
+            <div class="tabs">
+
+                <button
+                    id="loginTab"
+                    class="active"
+                    onclick="authMode('login')"
+                >
+                    Login
+                </button>
+
+                <button
+                    id="regTab"
+                    onclick="authMode('register')"
+                >
+                    Register
+                </button>
+
+            </div>
+
+
+            <form
+                class="form"
+                id="authForm"
+                onsubmit="submitAuth(event)"
+            >
+
+                <input
+                    id="name"
+                    placeholder="Full name"
+                    style="display:none"
+                >
+
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    minlength="6"
+                    required
+                >
+
+                <button class="primary">
+                    Continue
+                </button>
+
+            </form>
+
+            <p
+                id="authMsg"
+                class="muted"
+            ></p>
+
+        </div>
+
+    `;
+
+}
+
+
+function authMode(type){
+
+    mode = type;
+
+    const name =
+        document.getElementById('name');
+
+    if(name){
+
+        name.style.display =
+            type === 'register'
+            ? 'block'
+            : 'none';
+
+    }
+
+
+    const loginTab =
+        document.getElementById('loginTab');
+
+    const registerTab =
+        document.getElementById('regTab');
+
+
+    if(loginTab){
+
+        loginTab.className =
+            type === 'login'
+            ? 'active'
+            : '';
+
+    }
+
+
+    if(registerTab){
+
+        registerTab.className =
+            type === 'register'
+            ? 'active'
+            : '';
+
+    }
+
+}
+
+
+/* =========================
+   LOGIN / REGISTER
+========================= */
+
+async function submitAuth(event){
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById('email');
+
+    const password =
+        document.getElementById('password');
+
+    const name =
+        document.getElementById('name');
+
+    const message =
+        document.getElementById('authMsg');
+
+
+    const body = {
+
+        email:
+            email.value.trim(),
+
+        password:
+            password.value
+
+    };
+
+
+    if(mode === 'register'){
+
+        body.name =
+            name.value.trim();
+
+    }
+
+
+    try{
+
+        let data;
+
+
+        try{
+
+            data =
+                await api(
+                    '/' + mode,
+                    {
+                        method:'POST',
+                        body:JSON.stringify(body)
+                    }
+                );
+
+        }
+        catch(error){
+
+            data =
+                await api(
+                    '/auth/' + mode,
+                    {
+                        method:'POST',
+                        body:JSON.stringify(body)
+                    }
+                );
+
+        }
+
+
+        token =
+            data.token ||
+            data.accessToken ||
+            data.data?.token ||
+            '';
+
+
+        user =
+            data.user ||
+            data.data?.user ||
+            {
+                name:
+                    body.name ||
+                    body.email.split('@')[0],
+
+                email:
+                    body.email
+            };
+
+
+        if(
+            data.userId &&
+            !user.id
+        ){
+
+            user.id =
+                data.userId;
+
+        }
+
+
+        localStorage.setItem(
+            'shopease_token',
+            token
+        );
+
+        localStorage.setItem(
+            'shopease_user',
+            JSON.stringify(user)
+        );
+
+
+        toast(
+            mode === 'login'
+            ? 'Logged in successfully'
+            : 'Account created successfully'
+        );
+
+
+        go('home');
+
+    }
+    catch(error){
+
+        if(message){
+
+            message.textContent =
+                error.message ||
+                'Authentication failed';
+
+        }
+
+    }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    token = '';
+    user = null;
+
+    localStorage.removeItem(
+        'shopease_token'
+    );
+
+    localStorage.removeItem(
+        'shopease_user'
+    );
+
+    toast('Logged out');
+
+    go('home');
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function checkout(){
+
+    if(!user){
+
+        return `
+
+            <div class="empty">
+
+                <h2>
+                    Please login before checkout
+                </h2>
+
+                <button
+                    class="primary"
+                    onclick="go('account')"
+                >
+                    Login
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    if(!cart.length){
+
+        return `
+
+            <div class="empty">
+
+                <h2>
+                    Your cart is empty
+                </h2>
+
+                <button
+                    class="primary"
+                    onclick="go('shop')"
+                >
+                    Shop products
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    const subtotal =
+        cart.reduce(
+            function(sum,item){
+
+                const product =
+                    products.find(
+                        p =>
+                            p.id === Number(item.id)
+                    );
+
+                return (
+                    sum +
+                    (
+                        product
+                        ? product.price * item.qty
+                        : 0
+                    )
+                );
+
+            },
+            0
+        );
+
+
+    const shipping =
+        subtotal >= 999
+        ? 0
+        : 79;
+
+
+    return `
+
+        <h1 class="pageTitle">
+            Checkout
+        </h1>
+
+
+        <div class="checkout">
+
+            <form
+                class="card form"
+                onsubmit="placeOrder(event)"
+            >
+
+                <div class="formGrid">
+
+                    <input
+                        id="coName"
+                        placeholder="Full name"
+                        value="${esc(user.name || '')}"
+                        required
+                    >
+
+                    <input
+                        id="phone"
+                        placeholder="Phone number"
+                        inputmode="numeric"
+                        required
+                    >
+
+                </div>
+
+
+                <textarea
+                    id="address"
+                    placeholder="Delivery address"
+                    required
+                ></textarea>
+
+
+                <div class="formGrid">
+
+                    <input
+                        id="city"
+                        placeholder="City"
+                        required
+                    >
+
+                    <input
+                        id="pin"
+                        placeholder="PIN code"
+                        inputmode="numeric"
+                        minlength="6"
+                        maxlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <select id="payment">
+
+                    <option value="Cash on Delivery">
+                        Cash on Delivery
+                    </option>
+
+                    <option value="UPI">
+                        UPI
+                    </option>
+
+                    <option value="Card">
+                        Card
+                    </option>
+
+                </select>
+
+
+                <button class="primary">
+                    Place order
+                </button>
+
+
+                <p
+                    id="orderMsg"
+                    class="muted"
+                ></p>
+
+            </form>
+
+
+            <aside class="card summary">
+
+                <h2>
+                    Order summary
+                </h2>
+
+
+                ${
+                    cart.map(function(item){
+
+                        const product =
+                            products.find(
+                                p =>
+                                    p.id === Number(item.id)
+                            );
+
+                        if(!product)return '';
+
+                        return `
+
+                            <div class="line">
+
+                                <span>
+                                    ${esc(product.name)}
+                                    × ${item.qty}
+                                </span>
+
+                                <b>
+                                    ${money(
+                                        product.price *
+                                        item.qty
+                                    )}
+                                </b>
+
+                            </div>
+
+                        `;
+
+                    }).join('')
+                }
+
+
+                <div class="line">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <b>
+                        ${
+                            shipping
+                            ? '₹79'
+                            : 'Free'
+                        }
+                    </b>
+
+                </div>
+
+
+                <div class="total">
+                    ${money(
+                        subtotal + shipping
+                    )}
+                </div>
+
+            </aside>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   PLACE ORDER
+========================= */
+
+async function placeOrder(event){
+
+    event.preventDefault();
+
+
+    const message =
+        document.getElementById(
+            'orderMsg'
+        );
+
+
+    const subtotal =
+        cart.reduce(
+            function(sum,item){
+
+                const product =
+                    products.find(
+                        p =>
+                            p.id === Number(item.id)
+                    );
+
+                return (
+                    sum +
+                    (
+                        product
+                        ? product.price * item.qty
+                        : 0
+                    )
+                );
+
+            },
+            0
+        );
+
+
+    const shipping =
+        subtotal >= 999
+        ? 0
+        : 79;
+
+
+    const body = {
+
+        items:
+            cart.map(function(item){
+
+                return {
+
+                    product_id:
+                        Number(item.id),
+
+                    id:
+                        Number(item.id),
+
+                    quantity:
+                        Number(item.qty),
+
+                    qty:
+                        Number(item.qty)
+
+                };
+
+            }),
+
+        total:
+            subtotal + shipping,
+
+        subtotal:
+            subtotal,
+
+        shipping:
+            shipping,
+
+        name:
+            document.getElementById(
+                'coName'
+            ).value.trim(),
+
+        phone:
+            document.getElementById(
+                'phone'
+            ).value.trim(),
+
+        address:
+            document.getElementById(
+                'address'
+            ).value.trim(),
+
+        city:
+            document.getElementById(
+                'city'
+            ).value.trim(),
+
+        pin:
+            document.getElementById(
+                'pin'
+            ).value.trim(),
+
+        postal_code:
+            document.getElementById(
+                'pin'
+            ).value.trim(),
+
+        payment_method:
+            document.getElementById(
+                'payment'
+            ).value
+
+    };
+
+
+    try{
+
+        await api(
+            '/orders',
+            {
+                method:'POST',
+                body:JSON.stringify(body)
+            }
+        );
+
+
+        cart = [];
+
+        save();
+
+
+        document.getElementById(
+            'app'
+        ).innerHTML = `
+
+            <div class="empty">
+
+                <h1>
+                    Order placed successfully!
+                </h1>
+
+                <p class="muted">
+                    Your order has been recorded successfully.
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="go('orders')"
+                >
+                    View orders
+                </button>
+
+            </div>
+
+        `;
+
+    }
+    catch(error){
+
+        if(message){
+
+            message.textContent =
+                'Order failed: ' +
+                error.message;
+
+        }
+
+    }
+
+}
+
+
+/* =========================
+   ORDERS
+========================= */
+
+async function orders(){
+
+    if(!user){
+
+        return `
+
+            <div class="empty">
+
+                <h2>
+                    Please login to view orders
+                </h2>
+
+                <button
+                    class="primary"
+                    onclick="go('account')"
+                >
+                    Login
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    try{
+
+        const data =
+            await api('/orders');
+
+
+        const list =
+            Array.isArray(data)
+            ? data
+            : (
+                data.orders ||
+                data.data ||
+                []
+            );
+
+
+        return `
+
+            <h1 class="pageTitle">
+                My orders
+            </h1>
+
+
+            ${
+                list.length
+                ?
+                list.map(function(order){
+
+                    return `
+
+                        <div class="order">
+
+                            <div
+                                style="
+                                    display:flex;
+                                    justify-content:space-between;
+                                    gap:10px
+                                "
+                            >
+
+                                <b>
+                                    Order #
+                                    ${
+                                        esc(
+                                            order.id ||
+                                            order.order_id ||
+                                            '—'
+                                        )
+                                    }
+                                </b>
+
+                                <span class="status">
+                                    ${
+                                        esc(
+                                            order.status ||
+                                            'Processing'
+                                        )
+                                    }
+                                </span>
+
+                            </div>
+
+
+                            <p class="muted">
+                                ${
+                                    esc(
+                                        order.created_at ||
+                                        order.date ||
+                                        ''
+                                    )
+                                }
+                            </p>
+
+
+                            <h3>
+                                ${money(order.total)}
+                            </h3>
+
+                        </div>
+
+                    `;
+
+                }).join('')
+                :
+                `
+                <div class="empty">
+
+                    <h2>
+                        No orders yet
+                    </h2>
+
+                    <button
+                        class="primary"
+                        onclick="go('shop')"
+                    >
+                        Start shopping
+                    </button>
+
+                </div>
+                `
+            }
+
+        `;
+
+    }
+    catch(error){
+
+        return `
+
+            <div class="empty">
+
+                <h2>
+                    Could not load orders
+                </h2>
+
+                <p class="muted">
+                    ${esc(error.message)}
+                </p>
+
+                <button
+                    class="secondary"
+                    onclick="go('home')"
+                >
+                    Back home
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================
+   MAIN RENDER
+========================= */
+
+async function render(){
+
+    if(rendering)return;
+
+    rendering = true;
+
+
+    try{
+
+        const [
+            page,
+            query
+        ] = route();
+
+
+        if(page === 'home'){
+
+            app.innerHTML =
+                home();
+
+        }
+
+        else if(page === 'shop'){
+
+            /*
+               If a category name is passed
+               through the URL, use it as
+               the category filter.
+            */
+
+            app.innerHTML =
+                shop(query);
+
+        }
+
+        else if(page === 'categories'){
+
+            app.innerHTML =
+                categories();
+
+        }
+
+        else if(page === 'product'){
+
+            app.innerHTML =
+                detail(query);
+
+        }
+
+        else if(page === 'cart'){
+
+            app.innerHTML =
+                cartPage();
+
+        }
+
+        else if(page === 'wishlist'){
+
+            app.innerHTML =
+                wishlistPage();
+
+        }
+
+        else if(page === 'account'){
+
+            app.innerHTML =
+                account();
+
+        }
+
+        else if(page === 'checkout'){
+
+            app.innerHTML =
+                checkout();
+
+        }
+
+        else if(page === 'orders'){
+
+            app.innerHTML =
+                '<div class="loading">Loading orders...</div>';
+
+            app.innerHTML =
+                await orders();
+
+        }
+
+        else{
+
+            app.innerHTML =
+                home();
+
+        }
+
+
+        updateBadges();
+
+    }
+    finally{
+
+        rendering = false;
+
+    }
+
+}
+
+
+/* =========================
+   START APP
+========================= */
+
+window.addEventListener(
+    'hashchange',
+    render
+);
+
+
+(async function(){
+
+    app.innerHTML =
+        '<div class="loading">Loading ShopEase...</div>';
+
+    await load();
+
+    await render();
+
+})();
+
+</script>
+
+</body>
+</html>
