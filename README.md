@@ -52,8 +52,7 @@ ecommerce-app/
    npm start
    ```
 
-4. Open **http://localhost:3000** in your browser.
-
+4.
 ## How it works
 
 - **Database**: `better-sqlite3` creates `db/store.db` automatically on first run, with tables for `users`, `products`, `cart_items`, `orders`, and `order_items`.
