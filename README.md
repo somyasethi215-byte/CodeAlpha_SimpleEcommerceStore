@@ -60,9 +60,3 @@ ecommerce-app/
 - **Cart**: stored server-side per user (not in the browser), so it survives across devices/sessions as long as you're logged in.
 - **Checkout**: wrapped in a SQLite transaction — it checks stock, creates the order + order items, decrements stock, and clears the cart all atomically. If stock runs out mid-request, nothing is partially applied.
 
-## Next steps if you want to extend this
-- Add an "admin" role to manage products from the UI instead of `seed.js`.
-- Add product categories/filters.
-- Add pagination for the product grid.
-- Swap SQLite for PostgreSQL/MySQL for production (the SQL is simple enough to port).
-- Add a real payment integration (Stripe, Razorpay, etc.) instead of instant "placed" status.
